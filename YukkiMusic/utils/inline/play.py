@@ -36,8 +36,8 @@ def stream_markup_timer(_, videoid, chat_id, played, dur):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
+                text=f"Controls",
+                callback_data="ctrls_main",
             )
         ],
         [
@@ -64,8 +64,8 @@ def telegram_markup_timer(_, chat_id, played, dur):
     buttons = [
         [
             InlineKeyboardButton(
-                text=f"{played} {bar} {dur}",
-                callback_data="GetTimer",
+                text=f"Controls",
+                callback_data="ctrls_main",
             )
         ],
         [
