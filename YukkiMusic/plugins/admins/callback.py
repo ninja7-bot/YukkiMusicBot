@@ -23,10 +23,27 @@ from YukkiMusic.utils.inline.play import (panel_markup_1,
                                           telegram_markup)
 from YukkiMusic.utils.stream.autoclear import auto_clean
 from YukkiMusic.utils.thumbnails import gen_thumb
+from ...plugins.tools.lyrics import lrsearch
+from ...plugins.tools.songs import song_download_cb
 
 wrong = {}
 
+@app.on_callbackquery(filters.regex("lrsearch") & ~BANNED_USERS)
+async def lrsearch(client, message: Message, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    title = callback_request.split("|")
+    lrsearch(title)
 
+@app.on_callbackquery(filters.regex("song_download") & ~BANNED_USERS)
+async def lrsearch(client, message: Message, _):
+    await CallbackQuery.answer()
+    callback_data = CallbackQuery.data.strip()
+    callback_request = callback_data.split(None, 1)[1]
+    title = callback_request.split("|")
+    song_download_cb(title)
+    
 @app.on_callback_query(filters.regex("PanelMarkup") & ~BANNED_USERS)
 @languageCB
 async def markup_panel(client, CallbackQuery: CallbackQuery, _):
