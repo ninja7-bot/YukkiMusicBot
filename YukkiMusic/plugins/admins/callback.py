@@ -29,7 +29,7 @@ from ...plugins.tools.songs import song_download_cb
 wrong = {}
 
 @app.on_callbackquery(filters.regex("lrsearch") & ~BANNED_USERS)
-async def lrsearch(client, CallbackQuery: CallbackQuery, _):
+async def lyrics_search(client, CallbackQuery: CallbackQuery, _):
     await CallbackQuery.answer()
     callback_data = CallbackQuery.data.strip()
     callback_request = callback_data.split(None, 1)[1]
@@ -37,7 +37,7 @@ async def lrsearch(client, CallbackQuery: CallbackQuery, _):
     lrsearch(title)
 
 @app.on_callbackquery(filters.regex("song_download") & ~BANNED_USERS)
-async def lrsearch(client, CallbackQuery: CallbackQuery, _):
+async def song_download(client, CallbackQuery: CallbackQuery, _):
     await CallbackQuery.answer()
     callback_data = CallbackQuery.data.strip()
     callback_request = callback_data.split(None, 1)[1]
